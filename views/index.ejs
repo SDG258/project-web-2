@@ -1,0 +1,8 @@
+<%- include('header', { title: 'Home', activeHome: 'active', activeSendMoney: '', activeSaving: '', activeActivityLog: '', activeProfile: '', activeChangeProfile: '', activeLogout: '' }); -%>
+
+  <p>Xin chào <%= currentUser ? (currentUser.token ? ' vui lòng ra ngân hàng và xác thực tài khoản' : currentUser.displayName) :'khách' %></p>
+  <% if(!currentUser) { %> 
+    <p><a href="login">Đăng nhập</a> hoặc <a href="register">Đăng ký</a></p>
+  <% } %> 
+
+<%- include('footer'); -%>

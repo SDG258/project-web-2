@@ -1,0 +1,16 @@
+<%- include('header', { title: 'Profile', activeHome: '', activeSendMoney: '', activeSaving: '', activeActivityLog: '', activeProfile: 'active', activeChangeProfile: '', activeLogout: '' }); -%>
+
+    <ul>
+        <li><strong>ID:</strong> <%= currentUser.id %></li>
+        <li><strong>Email:</strong> <%= currentUser.email %></li>
+        <li><strong>Tên hiển thị:</strong> <%= currentUser.displayName %></li>
+    </ul>
+    <form method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="avatar">Avatar</label>
+          <input type="file" class="form-control-file" id="avatar" name="avatar">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+<%- include('footer'); -%>

@@ -1,0 +1,19 @@
+<%- include('header', {title: 'Register', activeHome: '', activeSendMoney: '', activeSaving: '', activeActivityLog: '', activeProfile: '', activeChangeProfile: '', activeLogout: '' }) -%>
+
+  <form method="POST">
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" id="email" name="email">
+      </div>
+      <div class="form-group">
+        <label for="displayName">Display Name</label>
+        <input type="text" class="form-control" id="displayName" name="displayName">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password">
+      </div>
+      <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+
+<%- include('footer') -%>
