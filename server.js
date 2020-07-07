@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
+var path = require('path');
 const db = require('./services/db');
 
 const port = process.env.PORT || 3000;
@@ -17,7 +18,7 @@ app.use(cookieSession({
 app.set('views', './views');
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(express.static(path.join(__dirname, 'public')));
 //Auth middlewares
 app.use(require('./middlewares/auth'));
 
