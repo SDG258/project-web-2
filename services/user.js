@@ -37,9 +37,13 @@ User.init({
   },
   password: {
     type: Sequelize.STRING,
+    allowNull: false,
   },
   token: {
     type: Sequelize.STRING, 
+  },
+  identityCard: {
+    type: Sequelize.STRING,
   },
   idcard: {
     type: Sequelize.STRING, 
