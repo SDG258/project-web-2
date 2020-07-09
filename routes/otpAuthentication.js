@@ -21,17 +21,17 @@ router.post('/', asyncHandler(async function postLogin(req, res) {
         user.save();
     }
 
-    res.redirect('dashboard.html');
+    res.redirect('accounts');
 
 }));
 
 module.exports = router;
 router.post('/', asyncHandler(async function postLogin(req, res) {
     const user = await User.findUserById(req.session.userId);
-    if(user.sms != req.body.sms) {
+    if(user.sms != req.body.sms || user.sms === null || user.token === null) {
         return res.render('signin');
     }
 
     req.session.userId = user.id;
-    res.redirect('dashboard.html');
+    res.redirect('accounts');
 }));
