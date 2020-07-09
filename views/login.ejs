@@ -1,4 +1,4 @@
-<%- include('header', { title: 'Login', activeHome: '',activeSendMoney: '',activeSaving: '', activeSendMoney: '', activeSaving: '', activeActivityLog: '', activeProfile: '', activeLogout: '' }); -%>
+<%- include('header');, { title: 'Login', activeHome: '',activeSendMoney: '',activeSaving: '', activeSendMoney: '', activeSaving: '', activeActivityLog: '', activeProfile: '', activeLogout: '' }); -%>
 
 <form method="POST">
     <div class="form-group">
@@ -11,5 +11,5 @@
     </div>
     <button type="submit" class="btn btn-primary">Login</button>
   </form>
-
+<%- include('header'); -%>
 <%- include('footer'); -%>

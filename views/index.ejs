@@ -1,22 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-
-<!-- Mirrored from quixlab.com/demo/tradient/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Jul 2020 17:49:38 GMT -->
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tradient </title>
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="vendor/waves/waves.min.css">
-    <link rel="stylesheet" href="vendor/owlcarousel/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
+<%- include('header'); -%>
 
     <div id="preloader">
         <div class="sk-three-bounce">
@@ -33,8 +15,8 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <nav class="navbar navbar-expand-lg navbar-light px-0">
-                            <a class="navbar-brand" href="index.html"><img src="images/w_logo.png" alt="">
-                                <span>Tradient</span></a>
+                            <a class="navbar-brand" href="/"><img src="/images/w_logo.png" alt="">
+                                <span>SDG 258</span></a>
                             <button class="navbar-toggler" type="button" data-toggle="collapse"
                                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                 aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +26,7 @@
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="#" data-scroll-nav="0">Home</a>
+                                        <a class="nav-link active" href="/" data-scroll-nav="0">Trang chủ</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#" data-scroll-nav="1">Market</a>
@@ -63,8 +45,8 @@
                             <div class="dashboard_log">
                                 <div class="d-flex align-items-center">
                                     <div class="header_auth">
-                                        <a href="signin" class="btn btn-success">Sign In</a>
-                                        <a href="signup " class="btn btn-outline-primary">Sign Up</a>
+                                        <a href="signin" class="btn btn-success">Đăng Nhập</a>
+                                        <a href="signup " class="btn btn-outline-primary">Đăng Ký</a>
                                     </div>
                                 </div>
                             </div>
@@ -512,29 +494,4 @@
         </div>
     </div>
 
-
-    <!-- <div class="bg_icons"></div> -->
-
-
-
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/waves/waves.min.js"></script>
-
-    <script src="vendor/owlcarousel/js/owl.carousel.min.js"></script>
-    <script src="js/plugins/owl-carousel-init.js"></script>
-    <script src="vendor/scrollit/scrollIt.js"></script>
-    <script src="js/plugins/scrollit-init.js"></script>
-
-    <!-- Chart sparkline plugin files -->
-    <script src="vendor/jquery-sparkline/jquery.sparkline.min.js"></script>
-    <script src="js/plugins/sparkline-init.js"></script>
-
-    <script src="vendor/validator/jquery.validate.js"></script>
-    <script src="vendor/validator/validator-init.js"></script>
-    <script src="js/scripts.js"></script>
-</body>
-
-
-<!-- Mirrored from quixlab.com/demo/tradient/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 07 Jul 2020 17:49:41 GMT -->
-</html>
+<%- include('footer'); -%>

@@ -29,6 +29,8 @@ router.post('/', [
     body('displayName')
             .trim()
             .notEmpty(),
+    body('phone')
+        .isLength({ min: 9 }),
     body('identityCard')
         .isLength({ min: 6 }),
 ],asyncHandler(async function (req, res) {
@@ -36,11 +38,14 @@ router.post('/', [
     if (!errors.isEmpty()) {
       return res.status(422).render('register', { errors: errors.array() });
     }
+
     const user = await User.create({
         email: req.body.email,
         displayName: req.body.displayName,
+        phone: req.body.phone,
         password: User.hashPassword(req.body.password),
         token: crypto.randomBytes(3).toString('hex').toUpperCase(),
+        sms: crypto.randomBytes(4).toString('hex').toUpperCase(),
         identityCard: req.body.identityCard,
         idcard: cryptoRandomString({length: 10, type: 'numeric'}),
         totalMoney: 0,

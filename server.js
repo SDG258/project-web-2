@@ -25,8 +25,9 @@ app.use(require('./middlewares/auth'));
 
 //Route
 app.get('/', require('./routes/index'));
-app.use('/signin', require('./routes/signin'))
+app.use('/signin', require('./routes/signin'));
 app.use('/signup', require('./routes/signup'));
+app.use('/otp', require('./routes/otp'));
 app.get('/logout', require('./routes/logout'));
 app.use('/profile', require('./routes/profile'));
 
