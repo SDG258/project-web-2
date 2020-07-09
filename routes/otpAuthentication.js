@@ -8,21 +8,27 @@ const SMS = require('../services/sms');
 const router = new Router();
 
 router.get('/', function getLogin(req, res) {
-    res.render('otp-1');
+    res.render('otp-2');
 });
 
 router.post('/', asyncHandler(async function postLogin(req, res) {
     const user = await User.findUserById(req.session.userId);
 
-    if(user) { 
-        user.sms = cryptoRandomString({length: 4, type: 'numeric'});
-        user.save();
+    if(user.sms != req.body.sms) {
+        return res.redirect('signin');
     }
 
-    await SMS.send(user.phone, `Mã xác thực tài khoản: ${user.sms}`);
-
-    res.redirect('otp-2');
+    res.redirect('dashboard.html');
 
 }));
 
 module.exports = router;
+router.post('/', asyncHandler(async function postLogin(req, res) {
+    const user = await User.findUserById(req.session.userId);
+    if(user.sms != req.body.sms) {
+        return res.render('signin');
+    }
+
+    req.session.userId = user.id;
+    res.redirect('dashboard.html');
+}));

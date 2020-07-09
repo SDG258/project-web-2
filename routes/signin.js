@@ -14,8 +14,9 @@ router.post('/', asyncHandler(async function postLogin(req, res) {
     if(!user || !User.verifyPassword(req.body.password, user.password)) {
         return res.render('signin');
     }
+
     req.session.userId = user.id;
-    res.render('otp-1');
+    res.redirect('otp-1');
 }));
 
 router.get('/:id/:token', asyncHandler(async function(req, res) {
