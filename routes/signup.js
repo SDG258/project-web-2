@@ -2,7 +2,6 @@ const { Router } = require('express');
 const { body, validationResult } = require('express-validator');
 const asyncHandler = require('express-async-handler');
 const crypto = require('crypto');
-const cryptoRandomString = require('crypto-random-string');
 
 const User = require('../services/user');
 const Email = require('../services/email');
@@ -45,7 +44,6 @@ router.post('/', [
         phone: req.body.phone,
         password: User.hashPassword(req.body.password),
         token: crypto.randomBytes(3).toString('hex').toUpperCase(),
-        sms: crypto.randomBytes(4).toString('hex').toUpperCase(),
         identityCard: req.body.identityCard,
         idcard: cryptoRandomString({length: 10, type: 'numeric'}),
         totalMoney: 0,

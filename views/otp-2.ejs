@@ -1,22 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-
-<!-- Mirrored from quixlab.com/demo/tradient/otp-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 Jul 2020 11:56:53 GMT -->
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tradient </title>
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="vendor/waves/waves.min.css">
-    <link rel="stylesheet" href="vendor/owlcarousel/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body>
+<%- include('header'); -%>
 
     <div id="preloader">
         <div class="sk-three-bounce">
@@ -33,14 +15,14 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <nav class="navbar navbar-expand-lg navbar-light px-0 justify-content-between">
-                            <a class="navbar-brand" href="index.html"><img src="images/w_logo.png" alt="">
+                            <a class="navbar-brand" href="index.html"><img src="/images/w_logo.png" alt="">
                                 <span>Tradient</span></a>
 
                             <div class="dashboard_log">
                                 <div class="d-flex align-items-center">
                                     <div class="header_auth">
-                                        <a href="signin.html" class="btn btn-success  mx-2">Sign In</a>
-                                        <a href="signup.html" class="btn btn-outline-primary  mx-2">Sign Up</a>
+                                        <a href="signin" class="btn btn-success  mx-2">Đăng Nhập</a>
+                                        <a href="signup" class="btn btn-outline-primary  mx-2">Đăng xuất</a>
                                     </div>
                                 </div>
                             </div>
@@ -57,21 +39,21 @@
                     <div class="col-xl-4 col-md-6">
                         <div class="auth-form card">
                             <div class="card-body">
-                                <a class="page-back text-muted" href="otp-1.html"><span><i
-                                            class="fa fa-angle-left"></i></span> Back</a>
-                                <h3 class="text-center">OTP Verification</h3>
-                                <p class="text-center mb-5">We will send one time code on this number</p>
-                                <form action="https://quixlab.com/demo/tradient/dashboard.html">
+                                <a class="page-back text-muted" href="otp-1"><span><i
+                                            class="fa fa-angle-left"></i></span>Trở về</a>
+                                <h3 class="text-center">Mã xác minh OTP</h3>
+                                <p class="text-center mb-5">Chúng tôi sẽ gửi mã một lần vào số này</p>
+                                <form method="POST">
                                     <div class="form-group">
-                                        <label>Your OTP Code</label>
-                                        <input type="text" class="form-control text-center font-weight-bold" value="11 22 33">
+                                        <label>Mã OTP của bạn</label>
+                                        <input type="text" class="form-control text-center font-weight-bold" placeholder="0285" name="sms">
                                     </div>
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-success btn-block">Verify</button>
                                     </div>
                                 </form>
                                 <div class="info mt-3">
-                                    <p class="text-muted">You dont recommended to save password to browsers!</p>
+                                    <p class="text-muted">Bạn không nên lưu mật khẩu vào trình duyệt!</p>
                                 </div>
                             </div>
                         </div>
@@ -87,10 +69,10 @@
                 <div class="row">
                     <div class="col-xl-6 col-md-6">
                         <div class="footer-link text-left">
-                            <a href="#" class="m_logo"><img src="images/w_logo.png" alt=""></a>
-                            <a href="about.html">About</a>
-                            <a href="privacy-policy.html">Privacy Policy</a>
-                            <a href="term-condition.html">Term & Service</a>
+                            <a href="#" class="m_logo"><img src="/images/w_logo.png" alt=""></a>
+                            <a href="about">About</a>
+                            <a href="privacy-policy">Privacy Policy</a>
+                            <a href="term-condition">Term & Service</a>
                         </div>
                     </div>
                     <div class="col-xl-6 col-md-6 text-lg-right text-center">
@@ -117,13 +99,4 @@
 
     <div class="bg_icons"></div>
 
-
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/waves/waves.min.js"></script>
-    <script src="js/scripts.js"></script>
-</body>
-
-
-<!-- Mirrored from quixlab.com/demo/tradient/otp-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 Jul 2020 11:56:56 GMT -->
-</html>
+<%- include('footer'); -%>

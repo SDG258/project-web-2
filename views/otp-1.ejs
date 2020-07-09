@@ -1,22 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-
-<!-- Mirrored from quixlab.com/demo/tradient/otp-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 Jul 2020 11:57:05 GMT -->
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tradient </title>
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png">
-    <!-- Custom Stylesheet -->
-    <link rel="stylesheet" href="/vendor/waves/waves.min.css">
-    <link rel="stylesheet" href="/vendor/owlcarousel/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/css/style.css">
-</head>
-
-<body>
+<%- include('header'); -%>
 
     <div id="preloader">
         <div class="sk-three-bounce">
@@ -69,7 +51,7 @@
                                                 <span class="input-group-text pl-4 pr-4"><i
                                                         class="fa fa-phone"></i></span>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="+84 346 139 865" value="<%= currentUser.phone %> ">
+                                            <input type="text" class="form-control" value="<%= currentUser.phone %>" name="sms" disabled>
                                         </div>
                                     </div>
                                     <div class="text-center mt-4">
@@ -122,13 +104,4 @@
 
     <div class="bg_icons"></div>
 
-
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/waves/waves.min.js"></script>
-    <script src="js/scripts.js"></script>
-</body>
-
-
-<!-- Mirrored from quixlab.com/demo/tradient/otp-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 Jul 2020 11:57:05 GMT -->
-</html>
+<%- include('footer'); -%>

@@ -27,9 +27,10 @@ app.use(require('./middlewares/auth'));
 app.get('/', require('./routes/index'));
 app.use('/signin', require('./routes/signin'));
 app.use('/signup', require('./routes/signup'));
-app.use('/otp', require('./routes/otp'));
+app.use('/otp-1', require('./routes/otp'));
+app.use('/otp-2', require('./routes/otpAuthentication'));
+app.use('/accounts', require('./routes/accounts'));
 app.get('/logout', require('./routes/logout'));
-app.use('/profile', require('./routes/profile'));
 
 
 db.sync().then(function() {

@@ -11,11 +11,12 @@ router.get('/', function getLogin(req, res) {
 
 router.post('/', asyncHandler(async function postLogin(req, res) {
     const user = await User.findUserByEmail(req.body.email);
-    if(!user || !User.verifyPassword(req.body.password, user.password)) {
+    if(!user || !User.verifyPassword(req.body.password, user.password || !user.token === null)) {
         return res.render('signin');
     }
+
     req.session.userId = user.id;
-    res.render('otp-1');
+    res.redirect('otp-1');
 }));
 
 router.get('/:id/:token', asyncHandler(async function(req, res) {
