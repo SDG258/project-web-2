@@ -11,7 +11,8 @@ router.get('/', function profile(req, res) {
     }
 });
 
-router.post('/', upload.single('avatar'), function(req, res,nex ){
+
+router.post('/', upload.single('avatar'), function(req, res,nex ) {
     res.render('profile');
 });
 

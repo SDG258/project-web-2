@@ -1,16 +1,36 @@
-<%- include('header', { title: 'Profile', activeHome: '', activeSendMoney: '', activeSaving: '', activeActivityLog: '', activeProfile: 'active', activeChangeProfile: '', activeLogout: '' }); -%>
+<%- include('header', { title: 'Profile', activeHome: '', activeSendMoney: '', activeSaving: '', activeActivityLog: '', activeProfile: 'active', activeLogout: '' }); -%>
 
-    <ul>
-        <li><strong>ID:</strong> <%= currentUser.id %></li>
-        <li><strong>Email:</strong> <%= currentUser.email %></li>
-        <li><strong>Tên hiển thị:</strong> <%= currentUser.displayName %></li>
-    </ul>
-    <form method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-          <label for="avatar">Avatar</label>
-          <input type="file" class="form-control-file" id="avatar" name="avatar">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+<div class="card mb-3" style="max-width: 540px">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="images/avatar-<%= currentUser.id %>.png" class="card-img" alt="avatar">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><strong><%= currentUser.displayName %></strong></h5>
+        <p class="card-text">
+          <ul>
+            <li><strong>ID:</strong> <%= currentUser.id %></li>
+            <li><strong>Email:</strong> <%= currentUser.email %></li>
+            <li><strong>Số tài khoản:</strong><span id="txtCopyInput" type="text"> <%= currentUser.idcard %> </span>
+            <button id="btnCopy" data-clipboard-target="#txtCopyInput" type="button" class="btn btn-outline-primary">Sao chép</button>
+            <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+            <script>const clipBoard = new ClipboardJS('#btnCopy');</script>
+            </li>
+            <li><strong>Số tiền:</strong> <%= currentUser.totalMoney %> VNĐ</button>
+          </ul>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 
+<form method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="avatar">Avatar</label>
+      <input type="file" class="form-control-file" id="avatar" name="avatar">
+    </div>
+    <button type="submit" class="btn btn-primary">Tải ảnh lên</button>
+  </form>
+  
 <%- include('footer'); -%>
