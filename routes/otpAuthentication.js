@@ -14,8 +14,11 @@ router.get('/', function getLogin(req, res) {
 router.post('/', asyncHandler(async function postLogin(req, res) {
     const user = await User.findUserById(req.session.userId);
 
-    if(user.sms != req.body.sms) {
+    if(user && user.sms != req.body.sms) {
         return res.redirect('signin');
+    } else {
+        user.sms = null;
+        user.save();
     }
 
     res.redirect('dashboard.html');
