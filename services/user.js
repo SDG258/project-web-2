@@ -31,23 +31,37 @@ User.init({
     allowNull: false,
     unique: true,
   },
+
   displayName: {
     type: Sequelize.STRING,
     allowNull: false,
   },
+
+  phone: {
+    type: Sequelize.STRING,
+  },
+
   password: {
     type: Sequelize.STRING,
     allowNull: false,
   },
+
   token: {
     type: Sequelize.STRING, 
   },
+
+  sms: {
+    type: Sequelize.STRING, 
+  },
+
   identityCard: {
     type: Sequelize.STRING,
   },
+
   idcard: {
     type: Sequelize.STRING, 
   },
+
   totalMoney: {
     type: Sequelize.STRING, 
   },
