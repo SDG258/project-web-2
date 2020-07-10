@@ -14,17 +14,28 @@ router.get('/', function profile(req, res) {
     }
 });
 
-router.post('/', asyncHandler(async function(req, res) {
+router.post('/password', asyncHandler(async function(req, res) {
     const user = await User.findUserById(req.session.userId);
-    console.log(req.body.newPassword);
-    console.log(req.body.confirmPassword)
     if(req.body.newPassword === req.body.confirmPassword) {
         if(user) {
             user.password = User.hashPassword(req.body.newPassword);
             user.save();
         }
     }
-    res.redirect('logout');
+    res.redirect('/logout');
+}));
+
+router.post('/changeInfo', asyncHandler(async function(req, res) {
+    const user = await User.findUserById(req.session.userId);
+    if(user) {
+        user.dob = req.body.dob;
+        user.address = req.body.address;
+        user.wards = req.body.wards;
+        user.district = req.body.district;
+        user.city = req.body.city;
+        user.save();
+    }
+    res.redirect('/settings');
 }));
 
 router.post('/', upload.single('avatar'), function(req, res, nex ) {

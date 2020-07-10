@@ -56,7 +56,7 @@
                                     <div class="profile_log dropdown">
                                         <div class="user" data-toggle="dropdown">
                                             <span class="thumb"><i class="la la-user"></i></span>
-                                            <span class="name">Maria Pascle</span>
+                                            <span class="name"><%= currentUser.displayName %></span>
                                             <span class="arrow"><i class="la la-angle-down"></i></span>
                                         </div>
                                         <div class="dropdown-menu dropdown-menu-right">
@@ -169,7 +169,7 @@
                                         <h4 class="card-title">Thông tin tài khoản</h4>
                                     </div>
                                     <div class="card-body">
-                                        <form method="POST">
+                                        <form method="POST" action="/settings/password">
                                             <div class="form-row">
                                                 <div class="form-group col-xl-12">
                                                     <label class="mr-sm-2">Mail</label>
@@ -197,7 +197,7 @@
                                         <h4 class="card-title">Thông tin chi tiết</h4>
                                     </div>
                                     <div class="card-body">
-                                        <form method="post" name="myform" class="personal_validate">
+                                        <form method="POST" action="/settings/changeInfo">
                                             <div class="form-row">
                                                 <div class="form-group col-xl-6">
                                                     <label class="mr-sm-2">Họ tên</label>
@@ -216,25 +216,25 @@
                                                 <div class="form-group col-xl-6">
                                                     <label class="mr-sm-2">Ngày sinh</label>
                                                     <input type="text" class="form-control" placeholder="28-02-1999"
-                                                        autocomplete="off">
+                                                        autocomplete="off" name="dob">
                                                 </div>
                                                 <div class="form-group col-xl-6">
                                                     <label class="mr-sm-2">Địa chỉ</label>
                                                     <input type="text" class="form-control"
-                                                        placeholder="118A/4 Lý Thường Kiệt">
+                                                        placeholder="118A/4 Lý Thường Kiệt" name="address">
                                                 </div>
                                                 <div class="form-group col-xl-6">
-                                                    <label class="mr-sm-2">phường</label>
+                                                    <label class="mr-sm-2">Xã/Phường</label>
                                                     <input type="text" class="form-control"
-                                                        placeholder="phường 7">
+                                                        placeholder="phường 7" name="wards">
                                                 </div>
                                                 <div class="form-group col-xl-6">
-                                                    <label class="mr-sm-2">Quận</label>
-                                                    <input type="text" class="form-control" placeholder="Quận 10">
+                                                    <label class="mr-sm-2">Quận/Huyện</label>
+                                                    <input type="text" class="form-control" placeholder="Quận 10" name="district">
                                                 </div>
                                                 <div class="form-group col-xl-6">
-                                                    <label class="mr-sm-2">Thành phố</label>
-                                                    <input type="text" class="form-control" placeholder="Quận 10">
+                                                    <label class="mr-sm-2">Thành phố/Tỉnh</label>
+                                                    <input type="text" class="form-control" placeholder="Hồ Chí Minh" name="city">
                                                 </div>
 
                                                 <div class="form-group col-12">

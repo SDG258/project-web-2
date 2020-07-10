@@ -45,11 +45,15 @@ User.init({
     type: Sequelize.STRING,
   },
 
-  presentaddress: {
+  address: {
     type: Sequelize.STRING,
   },
 
-  permanentaddress: {
+  wards: {
+    type: Sequelize.STRING,
+  },
+
+  district: {
     type: Sequelize.STRING,
   },
 
