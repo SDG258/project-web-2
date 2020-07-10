@@ -5,7 +5,7 @@ const router = new Router();
 
 router.get('/', function profile(req, res) {
     if(req.currentUser) {
-        res.render('profile');
+        res.render('settings');
     } else {
         res.redirect('/');
     }
@@ -13,7 +13,7 @@ router.get('/', function profile(req, res) {
 
 
 router.post('/', upload.single('avatar'), function(req, res,nex ) {
-    res.render('profile');
+    res.render('settings');
 });
 
 module.exports = router;

@@ -41,6 +41,22 @@ User.init({
     type: Sequelize.STRING,
   },
 
+  dob: {
+    type: Sequelize.STRING,
+  },
+
+  presentaddress: {
+    type: Sequelize.STRING,
+  },
+
+  permanentaddress: {
+    type: Sequelize.STRING,
+  },
+
+  city: {
+    type: Sequelize.STRING,
+  },
+
   password: {
     type: Sequelize.STRING,
     allowNull: false,
