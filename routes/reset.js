@@ -5,12 +5,33 @@ const crypto = require('crypto');
 
 const User = require('../services/user');
 const Email = require('../services/email');
+const email = require('../services/email');
 
 const router = new Router();
 
 router.get('/', function(req, res){
     res.render('reset');
 });
+
+
+router.post('/', asyncHandler(async function postLogin(req, res) {
+    const user = await User.findUserByEmail(req.body.email);
+    if(!user) {
+        return res.render('signin');
+    }
+
+    req.session.userId = user.id;
+
+    if(user) { 
+        password = crypto.randomBytes(3).toString('hex').toUpperCase();
+        user.password = User.hashPassword(password)
+        user.save();
+        req.session.userId = user.id;
+    }
+    
+    await Email.send(user.email, `Mật khẩu của bạn là: ${password}`);
+    res.redirect('/');
+}));
 
 router.post('/', [
     body('email')
@@ -26,21 +47,11 @@ router.post('/', [
 ],asyncHandler(async function (req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(422).render('register', { errors: errors.array() });
+      return res.status(422).render('siginup', { errors: errors.array() });
     }
 
-    const user = await User.create({
-        email: req.body.email,
-        displayName: req.body.displayName,
-        phone: req.body.phone,
-        password: User.hashPassword(req.body.password),
-        token: crypto.randomBytes(3).toString('hex').toUpperCase(),
-        identityCard: req.body.identityCard,
-        idcard: cryptoRandomString({length: 10, type: 'numeric'}),
-        totalMoney: 0,
-    });
 
-    await Email.send(user.email, 'Mã xác thực tài khoản:', `http://localhost:3000/login/${user.id}/${user.token}`);//${process.env.BASE_URL}
+    await Email.send(user.email, `Mật khẩu của bạn là: ${password}`);
     
     res.redirect('/');
 
