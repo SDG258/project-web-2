@@ -169,7 +169,7 @@
                                         <h4 class="card-title">Thông tin tài khoản</h4>
                                     </div>
                                     <div class="card-body">
-                                        <form action="#">
+                                        <form method="POST">
                                             <div class="form-row">
                                                 <div class="form-group col-xl-12">
                                                     <label class="mr-sm-2">Mail</label>
@@ -178,10 +178,10 @@
                                                 <div class="form-group col-xl-12">
                                                     <label class="mr-sm-2">Mật khẩu mới</label>
                                                     <input type="password" class="form-control"
-                                                        placeholder="**********">
+                                                        placeholder="**********" name="newPassword">
                                                     <label class="mr-sm-2">Nhập lại mật khẩu</label>
                                                     <input type="password" class="form-control"
-                                                        placeholder="**********">
+                                                        placeholder="**********" name="confirmPassword">
                                                 </div>
                                                 <div class="col-12">
                                                     <button class="btn btn-success waves-effect">Lưu</button>
