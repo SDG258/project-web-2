@@ -85,6 +85,9 @@ User.init({
   totalMoney: {
     type: Sequelize.STRING, 
   },
+  permission: {
+    type: Sequelize.STRING, 
+  },
 }, {
   sequelize: db,
   modelName: 'user',

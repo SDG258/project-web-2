@@ -11,12 +11,18 @@ router.get('/', function getLogin(req, res) {
 
 router.post('/', asyncHandler(async function postLogin(req, res) {
     const user = await User.findUserByEmail(req.body.email);
+
+    if(user && User.verifyPassword(req.body.password, user.password) && user.token === null && Number(user.permission) === 1) {
+        return    res.redirect('signup');
+    }
+
     if(!user || !User.verifyPassword(req.body.password, user.password) || !user.token === null) {
         return res.render('signin');
     }
 
     req.session.userId = user.id;
     res.redirect('otp-1');
+
 }));
 
 router.get('/:id/:token', asyncHandler(async function(req, res) {

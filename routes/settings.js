@@ -38,7 +38,8 @@ router.post('/changeInfo', asyncHandler(async function(req, res) {
     res.redirect('/settings');
 }));
 
-router.post('/', upload.single('avatar'), function(req, res, nex ) {
+router.post('/avatar', upload.single('avatar'), function(req, res, nex ) {
+    console.log(req.file.avatar);
     res.render('settings');
 });
 

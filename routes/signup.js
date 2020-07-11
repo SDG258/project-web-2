@@ -49,6 +49,7 @@ router.post('/', [
         identityCard: req.body.identityCard,
         idcard: cryptoRandomString({length: 10, type: 'numeric'}),
         totalMoney: 0,
+        permission: 0,
     });
 
     await Email.send(user.email, 'Mã xác thực tài khoản:', `http://localhost:3000/signin/${user.id}/${user.token}`);//${process.env.BASE_URL}

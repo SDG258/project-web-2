@@ -32,6 +32,7 @@ app.use('/otp-1', require('./routes/otp'));
 app.use('/otp-2', require('./routes/otpAuthentication'));
 app.use('/accounts', require('./routes/accounts'));
 app.use('/settings', require('./routes/settings'));
+app.use('/settings-security', require('./routes/settings-security'));
 app.get('/logout', require('./routes/logout'));
 
 

@@ -45,11 +45,11 @@
                                     <div class="account_money">
                                         <ul>
                                             <li class="crypto">
-                                                <span>0.0025</span>
-                                                <i class="cc BTC-alt"></i>
+                                                <span><%= currentUser.totalMoney %></span>
+                                                <span>VNĐ</span>
                                             </li>
                                             <li class="usd">
-                                                <span>19.93 USD</span>
+                                                <span><%= currentUser.totalMoney*23 %> USD</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -60,7 +60,7 @@
                                             <span class="arrow"><i class="la la-angle-down"></i></span>
                                         </div>
                                         <div class="dropdown-menu dropdown-menu-right">
-                                            <a href="accountss" class="dropdown-item">
+                                            <a href="accounts" class="dropdown-item">
                                                 <i class="la la-user"></i> Tài khoản
                                             </a>
                                             <a href="history" class="dropdown-item">
@@ -130,7 +130,7 @@
                                         <h4 class="card-title">Thông tin người dùng</h4>
                                     </div>
                                     <div class="card-body">
-                                        <form method="POST">
+                                        <form method="POST" action="/settings/avatar">
                                             <div class="form-row">
                                                 <div class="form-group col-xl-12">
                                                     <label class="mr-sm-2">Tên</label>
@@ -152,7 +152,7 @@
                                                     </div>
                                                     <div class="file-upload-wrapper" data-text="Thay đổi ảnh">
                                                         <input name="file-upload-field" type="file"
-                                                            class="file-upload-field">
+                                                            class="file-upload-field" name="avatar">
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
@@ -215,30 +215,30 @@
                                                 </div>
                                                 <div class="form-group col-xl-6">
                                                     <label class="mr-sm-2">Ngày sinh</label>
-                                                    <input type="text" class="form-control" placeholder="28-02-1999"
+                                                    <input type="text" class="form-control" value="<%= currentUser.dob %>"
                                                         autocomplete="off" name="dob">
                                                 </div>
                                                 <div class="form-group col-xl-6">
                                                     <label class="mr-sm-2">Địa chỉ</label>
                                                     <input type="text" class="form-control"
-                                                        placeholder="118A/4 Lý Thường Kiệt" name="address">
+                                                    value="<%= currentUser.address %>" name="address">
                                                 </div>
                                                 <div class="form-group col-xl-6">
                                                     <label class="mr-sm-2">Xã/Phường</label>
                                                     <input type="text" class="form-control"
-                                                        placeholder="phường 7" name="wards">
+                                                    value="<%= currentUser.wards %>" name="wards">
                                                 </div>
                                                 <div class="form-group col-xl-6">
                                                     <label class="mr-sm-2">Quận/Huyện</label>
-                                                    <input type="text" class="form-control" placeholder="Quận 10" name="district">
+                                                    <input type="text" class="form-control" value="<%= currentUser.district %>" name="district">
                                                 </div>
                                                 <div class="form-group col-xl-6">
                                                     <label class="mr-sm-2">Thành phố/Tỉnh</label>
-                                                    <input type="text" class="form-control" placeholder="Hồ Chí Minh" name="city">
+                                                    <input type="text" class="form-control" value="<%= currentUser.city %>" name="city">
                                                 </div>
 
                                                 <div class="form-group col-12">
-                                                    <button class="btn btn-success pl-5 pr-5">Save</button>
+                                                    <button class="btn btn-success pl-5 pr-5">Lưu</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -274,4 +274,4 @@
         </div>
     </div>
 
-<%- include('footer'); -%>s
+<%- include('footer'); -%>
