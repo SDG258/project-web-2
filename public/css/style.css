@@ -1,27 +1,3 @@
-/*
-    Name: Tradient
-    Author: Quixlab
-    Author Portfolio : https://themeforest.net/user/quixlab/portfolio
-    Email: quixlab.com@gmail.com
-    Skype: sporsho9 
-
-
-    Table of Content: 
-
-    1. Abstract
-    2. Bootstrap CSS
-    3. Base
-    4. Layout
-    5. Component
-    6. Pages
-    
-*/
-/*!
- * Bootstrap v4.3.1 (https://getbootstrap.com/)
- * Copyright 2011-2019 The Bootstrap Authors
- * Copyright 2011-2019 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
- */
 @import url(../vendor/animate/animate.min.css);
 @import url(../vendor/waves/waves.min.css);
 @import url("https://fonts.googleapis.com/css?family=Rubik:400,500,700&amp;display=swap");

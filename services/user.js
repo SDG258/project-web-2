@@ -41,6 +41,26 @@ User.init({
     type: Sequelize.STRING,
   },
 
+  dob: {
+    type: Sequelize.STRING,
+  },
+
+  address: {
+    type: Sequelize.STRING,
+  },
+
+  wards: {
+    type: Sequelize.STRING,
+  },
+
+  district: {
+    type: Sequelize.STRING,
+  },
+
+  city: {
+    type: Sequelize.STRING,
+  },
+
   password: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -63,6 +83,9 @@ User.init({
   },
 
   totalMoney: {
+    type: Sequelize.STRING, 
+  },
+  permission: {
     type: Sequelize.STRING, 
   },
 }, {

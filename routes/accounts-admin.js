@@ -5,7 +5,7 @@ const router = new Router();
 
 router.get('/', function profile(req, res) {
     if(req.currentUser) {
-        res.render('profile');
+        res.render('accounts');
     } else {
         res.redirect('/');
     }
