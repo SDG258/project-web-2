@@ -85,6 +85,11 @@ User.init({
   totalMoney: {
     type: Sequelize.STRING, 
   },
+
+  activate: {
+    type: Sequelize.STRING, 
+  },
+
   permission: {
     type: Sequelize.STRING, 
   },

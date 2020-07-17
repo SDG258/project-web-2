@@ -45,11 +45,10 @@
                                     <div class="account_money">
                                         <ul>
                                             <li class="crypto">
-                                                <span><%= currentUser.totalMoney %></span>
                                                 <span>VNĐ</span>
                                             </li>
                                             <li class="usd">
-                                                <span><%= currentUser.totalMoney*23 %> USD</span>
+                                                <span>USD</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -95,211 +94,111 @@
                 </div>
             </div>
         </div>
-
-        <div class="accounts mb-80">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="card profile_card">
-                            <div class="card-body">
-                                <div class="media">
-                                    <img class="mr-3 rounded-circle mr-0 mr-sm-3" src="/images/profile/2.png" width="60"
-                                        height="60">
-                                    <div class="media-body">
-                                        <span>Xin chào</span>
-                                        <h4 class="mb-2"><%= currentUser.displayName %></h4>
-                                        <p class="mb-1"> <span><i class="fa fa-phone mr-2 text-primary"></i></span><%= currentUser.phone %></p>
-                                        <p class="mb-1"> <span><i class="fa fa-envelope mr-2 text-primary"></i></span>
-                                            <%= currentUser.email %>
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <ul class="card-profile__info">
-                                    <li>
-                                        <h5 class="text-dark mr-4">Địa chỉ:</h5>
-                                        <span class="text-muted">House 14, Road 9, Gulshan, Dhaka</span>
-                                    </li>
-                                    <li class="mb-1">
-                                        <h5 class="text-dark mr-4">Tổng số giao dịch:</h5>
-                                        <span>103 Time (Today 5 Times)</span>
-                                    </li>
-                                    <li>
-                                        <h5 class="text-danger mr-4">Giao dịch gần nhất</h5>
-                                        <span class="text-danger">3 February, 2019, 10:00 PM</span>
-                                    </li>
-                                </ul>
-                                <div class="social-icons">
-                                    <a class="facebook text-center" href="javascript:void(0)"><span><i
-                                                class="fa fa-facebook"></i></span></a>
-                                    <a class="twitter text-center" href="javascript:void(0)"><span><i
-                                                class="fa fa-twitter"></i></span></a>
-                                    <a class="youtube text-center" href="javascript:void(0)"><span><i
-                                                class="fa fa-youtube"></i></span></a>
-                                    <a class="googlePlus text-center" href="javascript:void(0)"><span><i
-                                                class="fa fa-google"></i></span></a>
-                                </div>
-                            </div>
-                        </div>
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-header border-0">
+                        <h4 class="card-title">Tất cả tài khoản</h4>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6">
-                        <div class="card acc_balance">
-                            <div class="card-header">
-                                <h4 class="card-title">Thông tin</h4>
-                            </div>
-                            <div class="card-body">
-                                <span>Số tiền</span>
-                                <h3><%= currentUser.totalMoney %> VNĐ</h3>
+                    <div class="card-body pt-0">
+                        <div class="transaction-table">
+                            <div class="table-responsive">
+                                <table class="table mb-0 table-responsive-sm">
+                                    <tbody>
+                                        <tr>
+                                            <td><span class="sold-thumb"><i class="la la-arrow-down"></i></span>
+                                            </td>
 
-                                <div class="d-flex justify-content-between my-4">
-                                    <div>
-                                        <p class="mb-1">Số tài khoản</p>
-                                        <h4><%= currentUser.idcard %> </h4>
-                                    </div>
-                                    <div>
-                                        <p class="mb-1">CMND</p>
-                                        <h4><%= currentUser.identityCard %> </h4>
-                                    </div>
-                                </div>
-
-                                <div class="btn-group mb-3">
-                                    <button class="btn btn-primary">Gửi tiết kiệm tiền</button>
-                                    <button class="btn btn-success">Rút tiền</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4 class="card-title">Chuyển tiền</h4>
-                            </div>
-                            <div class="card-body">
-                                <form action="#">
-                                    <div class="form-group">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text"><i class="fa fa-money"></i></label>
-                                            </div>
-                                            <input type="text" class="form-control" placeholder="5000 USD">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <label class="input-group-text"><i class="fa fa-bank"></i></label>
-                                            </div>
-                                            <select class="form-control">
-                                                <option>Bank of America ********45845</option>
-                                                <option>Master Card ***********5458</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <button class="btn btn-primary btn-block">Chuyển tiền ngay</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="card">
-                            <div class="card-header border-0">
-                                <h4 class="card-title">Lịch sử giao dịch</h4>
-                            </div>
-                            <div class="card-body pt-0">
-                                <div class="transaction-table">
-                                    <div class="table-responsive">
-                                        <table class="table mb-0 table-responsive-sm">
-                                            <tbody>
-                                                <tr>
-                                                    <td><span class="sold-thumb"><i class="la la-arrow-down"></i></span>
-                                                    </td>
-
-                                                    <td>
-                                                        <span class="badge badge-danger">Sold</span>
-                                                    </td>
-                                                    <td>
-                                                        <i class="cc BTC"></i> BTC
-                                                    </td>
-                                                    <td>
-                                                        Using - Bank *******5264
-                                                    </td>
-                                                    <td class="text-danger">-0.000242 BTC</td>
-                                                    <td>-0.125 USD</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span class="buy-thumb"><i class="la la-arrow-up"></i></span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="badge badge-success">Buy</span>
-                                                    </td>
-                                                    <td>
-                                                        <i class="cc LTC"></i> LTC
-                                                    </td>
-                                                    <td>
-                                                        Using - Card *******8475
-                                                    </td>
-                                                    <td class="text-success">-0.000242 BTC</td>
-                                                    <td>-0.125 USD</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span class="sold-thumb"><i class="la la-arrow-down"></i></span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="badge badge-danger">Sold</span>
-                                                    </td>
-                                                    <td>
-                                                        <i class="cc XRP"></i> XRP
-                                                    </td>
-                                                    <td>
-                                                        Using - Card *******8475
-                                                    </td>
-                                                    <td class="text-danger">-0.000242 BTC</td>
-                                                    <td>-0.125 USD</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span class="buy-thumb"><i class="la la-arrow-up"></i></span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="badge badge-success">Buy</span>
-                                                    </td>
-                                                    <td>
-                                                        <i class="cc DASH"></i> DASH
-                                                    </td>
-                                                    <td>
-                                                        Using - Card *******2321
-                                                    </td>
-                                                    <td class="text-success">-0.000242 BTC</td>
-                                                    <td>-0.125 USD</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span class="sold-thumb"><i class="la la-arrow-down"></i></span>
-                                                    </td>
-                                                    <td>
-                                                        <span class="badge badge-danger">Sold</span>
-                                                    </td>
-                                                    <td>
-                                                        <i class="cc BTC"></i> BTC
-                                                    </td>
-                                                    <td>
-                                                        Using - Card *******2321
-                                                    </td>
-                                                    <td class="text-danger">-0.000242 BTC</td>
-                                                    <td>-0.125 USD</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                                            <td>
+                                                <span class="badge badge-danger">Sold</span>
+                                            </td>
+                                            <td>
+                                                <i class="cc BTC"></i> BTC
+                                            </td>
+                                            <td>
+                                                Using - Bank *******5264
+                                            </td>
+                                            <td class="text-danger">-0.000242 BTC</td>
+                                            <td>-0.125 USD</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="buy-thumb"><i class="la la-arrow-up"></i></span>
+                                            </td>
+                                            <td>
+                                                <span class="badge badge-success">Buy</span>
+                                            </td>
+                                            <td>
+                                                <i class="cc LTC"></i> LTC
+                                            </td>
+                                            <td>
+                                                Using - Card *******8475
+                                            </td>
+                                            <td class="text-success">-0.000242 BTC</td>
+                                            <td>-0.125 USD</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="sold-thumb"><i class="la la-arrow-down"></i></span>
+                                            </td>
+                                            <td>
+                                                <span class="badge badge-danger">Sold</span>
+                                            </td>
+                                            <td>
+                                                <i class="cc XRP"></i> XRP
+                                            </td>
+                                            <td>
+                                                Using - Card *******8475
+                                            </td>
+                                            <td class="text-danger">-0.000242 BTC</td>
+                                            <td>-0.125 USD</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="buy-thumb"><i class="la la-arrow-up"></i></span>
+                                            </td>
+                                            <td>
+                                                <span class="badge badge-success">Buy</span>
+                                            </td>
+                                            <td>
+                                                <i class="cc DASH"></i> DASH
+                                            </td>
+                                            <td>
+                                                Using - Card *******2321
+                                            </td>
+                                            <td class="text-success">-0.000242 BTC</td>
+                                            <td>-0.125 USD</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="sold-thumb"><i class="la la-arrow-down"></i></span>
+                                            </td>
+                                            <td>
+                                                <span class="badge badge-danger">Sold</span>
+                                            </td>
+                                            <td>
+                                                <i class="cc BTC"></i> BTC
+                                            </td>
+                                            <td class="text-danger">-0.000242 BTC</td>
+                                            <td>
+                                                <label class="toggle">
+                                                    <input class="toggle-checkbox" type="checkbox">
+                                                    <div class="toggle-switch"></div>
+                                                    <span class="toggle-label">Kích hoạt tài khoản</span>
+                                                </label>
+                                            </td>
+                                            <td>
+                                                <a href="#"><img src="/images/edit_property_200px.png" style="height: 40px; width: 40px;"></a>
+                                                <a href="#"><img src="/images/upload_80px.png" style="height: 40px; width: 40px;"></a>
+                                                <a href="#"><img src="/images/delete_80px.png" style="height: 40px; width: 40px;"></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+    </div>
+</div>
 
 
         <div class="footer">
