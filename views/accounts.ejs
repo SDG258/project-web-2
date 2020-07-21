@@ -118,7 +118,7 @@
                                 <ul class="card-profile__info">
                                     <li>
                                         <h5 class="text-dark mr-4">Địa chỉ:</h5>
-                                        <span class="text-muted">House 14, Road 9, Gulshan, Dhaka</span>
+                                        <span class="text-muted"><%= currentUser.address %>, <%= currentUser.wards %>, <%= currentUser.district %>,  <%= currentUser.city %> </span>
                                     </li>
                                     <li class="mb-1">
                                         <h5 class="text-dark mr-4">Tổng số giao dịch:</h5>
@@ -175,13 +175,13 @@
                                 <h4 class="card-title">Chuyển tiền</h4>
                             </div>
                             <div class="card-body">
-                                <form action="#">
+                                <form method="POST" action="/accounts/transfer">
                                     <div class="form-group">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <label class="input-group-text"><i class="fa fa-money"></i></label>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="5000 USD">
+                                            <input type="text" class="form-control" placeholder="50 000" name="amounOfMoney">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -189,12 +189,11 @@
                                             <div class="input-group-prepend">
                                                 <label class="input-group-text"><i class="fa fa-bank"></i></label>
                                             </div>
-                                            <select class="form-control">
-                                                <option>Bank of America ********45845</option>
-                                                <option>Master Card ***********5458</option>
-                                            </select>
+                                            <input type="number" class="form-control" placeholder="3161417448" name="beneficiaryCardNumber">
                                         </div>
+                                        <input type="text" class="form-control" placeholder="trả nợ" name="tradingName">
                                     </div>
+
 
                                     <button class="btn btn-primary btn-block">Chuyển tiền ngay</button>
                                 </form>

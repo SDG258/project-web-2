@@ -16,9 +16,9 @@ router.post('/', asyncHandler(async function postLogin(req, res) {
         req.session.userId = user.id;
         return res.render('accounts-admin');
     }
-    console.log(Number(user.activate));
-
+    
     if(!user || !User.verifyPassword(req.body.password, user.password) || !user.token === null || Number(user.activate) === 0 ) {
+
         return res.render('signin');
     }
 

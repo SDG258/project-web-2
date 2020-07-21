@@ -1,15 +1,17 @@
 const { Router } = require('express');
 const upload = require('../middlewares/upload');
-
+const User = require('../services/user');
 const router = new Router();
-
-router.get('/', function profile(req, res) {
+const asyncHandler = require('express-async-handler');
+router.get('/',   asyncHandler(async function (req, res) {
     if(req.currentUser) {
-        res.render('accounts');
+        const user = await User.findById(id)
+        res.locals.user = user;        
+        res.render('accounts-admin', { user });
     } else {
         res.redirect('/');
     }
-});
+}));
 
 
 router.post('/', upload.single('avatar'), function(req, res,nex ) {

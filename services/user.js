@@ -16,6 +16,14 @@ class User extends Model {
         });
     }
 
+    static async findUserByIdCard(idcard){
+      return User.findOne({
+          where: {
+            idcard,
+          }
+      });
+  }
+
     static hashPassword(password){
         return bcrypt.hashSync(password, 10);
     }
