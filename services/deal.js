@@ -16,13 +16,11 @@ Deal.init({
     transactionCardNumber: { //Số thẻ thực hiện giao dịch
     type: Sequelize.STRING,
     allowNull: false,
-    unique: true,
   },
 
   beneficiaryCardNumber: { // Số thẻ thụ hưởng 
     type: Sequelize.STRING,
     allowNull: false,
-    unique: true,
   },
 
   tradingName: { //Tên giao dịch

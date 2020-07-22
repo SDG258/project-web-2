@@ -1,5 +1,7 @@
 const { Router } = require('express');
 const asyncHandler = require('express-async-handler');
+const cryptoRandomString = require('crypto-random-string');
+
 const Deal = require('../services/deal');
 const User = require('../services/user');
 const upload = require('../middlewares/upload');
@@ -9,27 +11,30 @@ router.get('/', function profile(req, res) {
     if(req.currentUser) {
         res.render('accounts');
     } else {
-        res.redirect('/');
+        res.redirect('/')
     }
 });
 
 router.post('/transfer', asyncHandler(async function(req, res) {
     const userReceive = await User.findUserByIdCard(req.body.beneficiaryCardNumber);
-    const userSend = await User.findUserByIdCard('4118656180');
-    console.log(userSend.totalMoney);
-    console.log(req.body.amounOfMoney);
-    if(Number(userSend.totalMoney) > Number(req.body.amounOfMoney)) {
-        console.log('Song Du');
+    const userSend = await User.findUserByIdCard(req.currentUser.idcard);
+    if(Number(userSend.totalMoney) >= Number(req.body.amounOfMoney)) {
         if(userReceive) {
-            userReceive.totalMoney = userReceive.totalMoney + req.body.amounOfMoney;
-            userSend.totalMoney = userSend.totalMoney - req.body.amounOfMoney;
+            userReceive.totalMoney = Number(userReceive.totalMoney) + Number(req.body.amounOfMoney);
+            userSend.totalMoney = Number(userSend.totalMoney) - Number(req.body.amounOfMoney);
             userReceive.save();
             userSend.save();
             const deal = await Deal.create({
-                transactionCardNumber: '3586088953',
-                amounOfMoney: req.body.amounOfMoney,
+                transactionCardNumber: userSend.idcard,
                 beneficiaryCardNumber: req.body.beneficiaryCardNumber,
                 tradingName: req.body.tradingName,
+                amounOfMoney: req.body.amounOfMoney,
+                transactionNumber: cryptoRandomString({length: 5, type: 'numeric'}),
+            }).then(function(user) {
+                console.log('success', user.toJSON());
+            })
+            .catch(function(err) {
+                console.log(err);
             });
         }
     }
