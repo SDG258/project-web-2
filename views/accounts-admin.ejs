@@ -106,90 +106,34 @@
                                 <table class="table mb-0 table-responsive-sm">
                                     <tbody>
                                         <tr>
-                                        
-                                            <td><span class="sold-thumb"><i class="la la-arrow-down"></i></span>
-                                            </td>
+                                            <td>Tên</td>
+                                            <td>Email</td>
+                                            <td>SĐT</td>
+                                            <td>Số tiền</td>
+                                            <td>Số tài khoản</td>
+                                            <td>Trạng thái</td>
+                                        </tr>
+                                        <% listUser.forEach(u =>{  if(u.permission == "0"){%>
+                                            <tr>
+                                                <td><%= u.displayName %></td>
+                                                <td><%= u.email %></td>
+                                                <td><%= u.phone %></td>
+                                                <td><%= u.totalMoney %></td>
+                                                <td><%= u.idcard %></td>
 
-                                            <td>
-                                                <span class="badge badge-danger">Sold</span>
-                                            </td>
-                                            <td>
-                                                <i class="cc BTC"></i> BTC
-                                            </td>
-                                            <td>
-                                                <%= listUser[0].displayName %> 
-                                            </td>
-                                            <td class="text-danger">-0.000242 BTC</td>
-                                            <td>-0.125 USD</td>
-                                        </tr>
-                                        <tr>
-                                            <td><span class="buy-thumb"><i class="la la-arrow-up"></i></span>
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-success">Buy</span>
-                                            </td>
-                                            <td>
-                                                <i class="cc LTC"></i> LTC
-                                            </td>
-                                            <td>
-                                                Using - Card *******8475
-                                            </td>
-                                            <td class="text-success">-0.000242 BTC</td>
-                                            <td>-0.125 USD</td>
-                                        </tr>
-                                        <tr>
-                                            <td><span class="sold-thumb"><i class="la la-arrow-down"></i></span>
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-danger">Sold</span>
-                                            </td>
-                                            <td>
-                                                <i class="cc XRP"></i> XRP
-                                            </td>
-                                            <td>
-                                                Using - Card *******8475
-                                            </td>
-                                            <td class="text-danger">-0.000242 BTC</td>
-                                            <td>-0.125 USD</td>
-                                        </tr>
-                                        <tr>
-                                            <td><span class="buy-thumb"><i class="la la-arrow-up"></i></span>
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-success">Buy</span>
-                                            </td>
-                                            <td>
-                                                <i class="cc DASH"></i> DASH
-                                            </td>
-                                            <td>
-                                                Using - Card *******2321
-                                            </td>
-                                            <td class="text-success">-0.000242 BTC</td>
-                                            <td>-0.125 USD</td>
-                                        </tr>
-                                        <tr>
-                                            <td><span class="sold-thumb"><i class="la la-arrow-down"></i></span>
-                                            </td>
-                                            <td>
-                                                <span class="badge badge-danger">Sold</span>
-                                            </td>
-                                            <td>
-                                                <i class="cc BTC"></i> BTC
-                                            </td>
-                                            <td class="text-danger">-0.000242 BTC</td>
-                                            <td>
-                                                <label class="toggle">
-                                                    <input class="toggle-checkbox" type="checkbox" name="checkbox">
-                                                    <div class="toggle-switch"></div>
-                                                    <span class="toggle-label">Kích hoạt tài khoản</span>
-                                                </label>
-                                            </td>
-                                            <td>
-                                                <a href="#"><img src="/images/edit_property_200px.png" style="height: 40px; width: 40px;"></a>
-                                                <a href="#"><img src="/images/upload_80px.png" style="height: 40px; width: 40px;"></a>
-                                                <a href="#"><img src="/images/delete_80px.png" style="height: 40px; width: 40px;"></a>
-                                            </td>
-                                        </tr>
+                                                <td>
+                                                    <select class="form-control" name="method">
+                                                        <option value="0" <% if(u.activate =='0'){ %>
+                                                            selected="selected"
+                                                          <% } %> >Chưa kích hoạt</option>
+                                                        <option value="1" <% if(u.activate =='1'){ %>
+                                                            selected="selected"
+                                                          <% } %>>Đã kích hoạt</option>
+                                                    </select>
+                                                </td>
+                                                <td><button type="submit" name="submit" class="btn btn-success btn-block">Lưu</button></td>
+                                            </tr>
+                                       <% }}); %>
                                     </tbody>
                                 </table>
                             </div>
@@ -198,29 +142,8 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
-
-        <div class="footer">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-xl-6 col-md-6">
-                        <div class="copy_right">
-                            Copyright © 2019 Quixlab. All Rights Reserved.
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-md-6 text-lg-right text-center">
-                        <div class="social">
-                            <a href="#"><i class="fa fa-youtube-play"></i></a>
-                            <a href="#"><i class="fa fa-instagram"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
     </div>
 
 <%- include('footer'); -%>
