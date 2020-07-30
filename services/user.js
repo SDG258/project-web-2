@@ -4,6 +4,17 @@ const db = require('./db');
 const Model = Sequelize.Model;
 
 class User extends Model {
+
+    static async updateStatus(id,status){
+      return User.update({
+        activate: status,
+      },{
+        where: {
+          id: id,
+        }
+      });
+    }
+
     static async findUserById(id){
         return User.findByPk(id);
     }

@@ -7,9 +7,17 @@ const User = require('../services/user');
 const upload = require('../middlewares/upload');
 const router = new Router();
 
-router.get('/', function profile(req, res) {
+router.get('/', async function profile(req, res) {
+    const deal =  await Deal.findAll({
+        where: {
+            transactionCardNumber: req.currentUser.idcard,
+        },
+        order: [['createdAt', 'DESC']]
+    });
+
+
     if(req.currentUser) {
-        res.render('accounts');
+        res.render('accounts', { deal });
     } else {
         res.redirect('/')
     }

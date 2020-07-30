@@ -14,7 +14,8 @@ router.post('/', asyncHandler(async function postLogin(req, res) {
 
     if(user && User.verifyPassword(req.body.password, user.password) && user.token === null && Number(user.permission) === 1) {
         req.session.userId = user.id;
-        return res.render('accounts-admin');
+        const listUser = [];
+        return res.redirect('/accounts-admin');
     }
     
     if(!user || !User.verifyPassword(req.body.password, user.password) || !user.token === null || Number(user.activate) === 0 ) {
