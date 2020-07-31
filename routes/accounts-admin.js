@@ -1,15 +1,50 @@
 const { Router } = require('express');
 const upload = require('../middlewares/upload');
-
+const User = require('../services/user');
 const router = new Router();
-
-router.get('/', function profile(req, res) {
+const asyncHandler = require('express-async-handler');
+router.get('/',asyncHandler(async function (req, res) {
     if(req.currentUser) {
-        res.render('accounts');
+        const user = await User.findUserById(req.currentUser.id);
+        const listUser = await User.findAll();
+        res.locals.user = user;        
+        res.render('accounts-admin', { listUser });
     } else {
         res.redirect('/');
     }
-});
+}));
+
+router.post('/:id',asyncHandler(async function (req, res, next){
+    const {id} = req.params;
+    const user = await User.findUserById(id);
+    if(user) { 
+        user.activate = Number(req.body.select);
+        user.save();
+    }
+    res.redirect('/accounts-admin');
+
+}));
+
+router.get('/edit/:id',asyncHandler(async function (req, res, next){
+    const {id} = req.params;
+    const user = await User.findUserById(id);
+    res.render('editInfoUser', {user});
+}));
+
+router.post('/edit/:id',asyncHandler(async function (req, res, next){
+    const {id} = req.params;
+    const user = await User.findUserById(id);
+    if(user) { 
+        user.dob = req.body.dob;
+        user.address = req.body.address;
+        user.wards = req.body.wards;
+        user.district = req.body.district;
+        user.city = req.body.city;
+        user.totalMoney = req.body.totalMoney;
+        user.save();
+    }
+    res.redirect('/accounts-admin');
+}));
 
 
 router.post('/', upload.single('avatar'), function(req, res,nex ) {

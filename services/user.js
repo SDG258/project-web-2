@@ -4,6 +4,17 @@ const db = require('./db');
 const Model = Sequelize.Model;
 
 class User extends Model {
+
+    static async updateStatus(id,status){
+      return User.update({
+        activate: status,
+      },{
+        where: {
+          id: id,
+        }
+      });
+    }
+
     static async findUserById(id){
         return User.findByPk(id);
     }
@@ -15,6 +26,14 @@ class User extends Model {
             }
         });
     }
+
+    static async findUserByIdCard(idcard){
+      return User.findOne({
+          where: {
+            idcard,
+          }
+      });
+  }
 
     static hashPassword(password){
         return bcrypt.hashSync(password, 10);
@@ -85,6 +104,11 @@ User.init({
   totalMoney: {
     type: Sequelize.STRING, 
   },
+
+  activate: {
+    type: Sequelize.STRING, 
+  },
+
   permission: {
     type: Sequelize.STRING, 
   },

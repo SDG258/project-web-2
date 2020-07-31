@@ -13,10 +13,13 @@ router.post('/', asyncHandler(async function postLogin(req, res) {
     const user = await User.findUserByEmail(req.body.email);
 
     if(user && User.verifyPassword(req.body.password, user.password) && user.token === null && Number(user.permission) === 1) {
-        return    res.redirect('signup');
+        req.session.userId = user.id;
+        const listUser = [];
+        return res.redirect('/accounts-admin');
     }
+    
+    if(!user || !User.verifyPassword(req.body.password, user.password) || !user.token === null || Number(user.activate) === 0 ) {
 
-    if(!user || !User.verifyPassword(req.body.password, user.password) || !user.token === null) {
         return res.render('signin');
     }
 

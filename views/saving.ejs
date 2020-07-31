@@ -158,20 +158,16 @@
                                         <h4><%= currentUser.identityCard %> </h4>
                                     </div>
                                 </div>
-
-                                <div class="btn-group mb-3">
-                                    <button class="btn btn-primary"> <a href="saving" style="color: white;">Gửi tiết kiệm tiền</a> </button>
-                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-4 col-lg-4">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Chuyển tiền</h4>
+                                <h4 class="card-title">Gửi tiết kiệm</h4>
                             </div>
                             <div class="card-body">
-                                <form method="POST" action="/accounts/transfer">
+                                <form method="POST" action="/saving">
                                     <div class="form-group">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
@@ -185,13 +181,25 @@
                                             <div class="input-group-prepend">
                                                 <label class="input-group-text"><i class="fa fa-bank"></i></label>
                                             </div>
-                                            <input type="number" class="form-control" placeholder="3161417448" name="beneficiaryCardNumber">
+                                            <select class="form-control" name="select">
+                                                <option value="3.701">1 tháng</option>
+                                                <option value="3.702">2 tháng</option>
+                                                <option value="3.9503">3 tháng</option>
+                                                <option value="6.3206">6 tháng</option>
+                                                <option value="6.307">7 tháng</option>
+                                                <option value="6.308">8 tháng</option>
+                                                <option value="6.3509">9 tháng</option>
+                                                <option value="6.410">10 tháng</option>
+                                                <option value="6.411">11 tháng</option>
+                                                <option value="7.4212">12 tháng</option>
+                                                <option value="7.4615">15 tháng</option>
+                                                <option value="7.0518">18 tháng</option>
+                                                <option value="7.0524">24 tháng</option>
+                                                <option value="7.0536">36 tháng</option>
+                                            </select>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="trả nợ" name="tradingName">
                                     </div>
-
-
-                                    <button class="btn btn-primary btn-block">Chuyển tiền ngay</button>
+                                    <button class="btn btn-primary btn-block">Gửi tiết kiệm</button>
                                 </form>
                             </div>
                         </div>
@@ -201,29 +209,34 @@
                     <div class="col-xl-12">
                         <div class="card">
                             <div class="card-header border-0">
-                                <h4 class="card-title">Lịch sử giao dịch</h4>
+                                <h4 class="card-title">Lịch sử gửi tiền</h4>
                             </div>
                             <div class="card-body pt-0">
                                 <div class="transaction-table">
                                     <div class="table-responsive">
                                         <table class="table mb-0 table-responsive-sm">
                                             <tbody>
-                                                <tr>
-                                                    <td>Số thẻ người gửi</td>
-                                                    <td>Số thẻ người nhận</td>
-                                                    <td>Số tiền</td>
-                                                    <td>Mã giao dịch</td>
-                                                    <td>Ngày và giờ thực hiện</td>
-                                                </tr>
-                                                <% deal.length > 0 ? deal.forEach( u => { %>
+                                                <form method="POST" action="/saving/withdrawal/<%= saving.transactionNumber %>">
+                                                    <% saving.length > 0 ? saving.forEach(u => {  if(u.status == 0) { %>
+                                                        <tr>
+                                                            <td id="<%= u.transactionNumber %>"><%= u.amounOfMoney %></td>
+                                                            <td><%= u.duration %>tháng</td>
+                                                            <td><%= u.createdAt %>%</td>
+                                                            <td><%= u.interestRate %>%</td>
+                                                            <td><a href="/saving/withdrawal/<%= u.transactionNumber %>" class="btn btn-primary btn-block" style="color: white;">Rút</a></td>
+                                                        </tr>
+                                                    <% }}) : '' %>
+                                                </form>
+                                              
+                                                <% saving.length > 0 ? saving.forEach(u => {  if(u.status == 1) { %>
                                                     <tr>
-                                                        <td><%= u.transactionCardNumber %></td>
-                                                        <td><%= u.beneficiaryCardNumber %></td>
                                                         <td><%= u.amounOfMoney %></td>
-                                                        <td><%= u.transactionNumber %></td>
-                                                        <td><%= u.createdAt %></td>
+                                                        <td><%= u.duration %>tháng</td>
+                                                        <td><%= u.createdAt %>%</td>
+                                                        <td><%= u.interestRate %>%</td>
+                                                        <td>Đã rút</td>
                                                     </tr>
-                                                <% }) : '' %>
+                                                <% }}) : '' %>
                                             </tbody>
                                         </table>
                                     </div>

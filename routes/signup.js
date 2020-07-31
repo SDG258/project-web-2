@@ -49,6 +49,7 @@ router.post('/', [
         identityCard: req.body.identityCard,
         idcard: cryptoRandomString({length: 10, type: 'numeric'}),
         totalMoney: 0,
+        activate: 0,
         permission: 0,
     });
 
