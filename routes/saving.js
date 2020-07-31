@@ -63,19 +63,25 @@ router.get('/withdrawal/:id', asyncHandler(async function(req, res) {
 
     const sentMonth = saving.createdAt.getMonth() + 1;
     const sentYear = saving.createdAt.getYear();
+    const profitAmount = 0;
 
     if(sentMonth + saving.duration === today.getMonth()+1 && sentYear ===saving.createdAt.getYear()) {
         if(user) {
-            user.totalMoney = user.totalMoney + saving.amounOfMoney * saving.interestRate * (saving.duration)/12
+            // Số tiền lãi = Số tiền gửi x lãi suất (%năm) x số ngày gửi/360.
+            profitAmount = saving.amounOfMoney * saving.interestRate * ((today.getMonth - saving.duration)*30)/360
+            user.totalMoney = user.totalMoney + profitAmount
             user.save();
         }
     } else {
         if(user) {
             //Số tiền lãi = Số tiền gửi x lãi suất (%/năm) x số ngày thực gửi/360
-            user.totalMoney = user.totalMoney + saving.amounOfMoney * saving.interestRate //* (saving.duration)/12
+            profitAmount = saving.amounOfMoney * saving.interestRate * ((today.getMonth - saving.duration)*30)/360
+            user.totalMoney = user.totalMoney + profitAmount *
             user.save();
         }
     }
+
+    await Email.send(user.email, 'Gửi tiết kiệm', `Số tiền lãi của bạn là: ${profitAmount}. Tổng số tiền hiện tại trong tài khoản của bạn là: ${user.totalMoney}`);
 
     saving.status = '1'
     saving.save();
