@@ -6,6 +6,7 @@ const Saving = require('../services/saving');
 const User = require('../services/user');
 const Deal = require('../services/deal');
 const upload = require('../middlewares/upload');
+const Email = require('../services/email');
 const { TodayInstance } = require('twilio/lib/rest/api/v2010/account/usage/record/today');
 const router = new Router();
 
@@ -36,6 +37,7 @@ router.post('/', asyncHandler(async function(req, res) {
     if(Number(user.totalMoney) >= Number(req.body.amounOfMoney)) {
         if(user) {
             user.totalMoney = Number(user.totalMoney) - Number(req.body.amounOfMoney);
+            console.log( user.totalMoney);
             user.save();
             const saving = await Saving.create({
                 transactionCardNumber: user.idcard,
@@ -59,24 +61,24 @@ router.get('/withdrawal/:id', asyncHandler(async function(req, res) {
     const user = await User.findUserByIdCard(req.currentUser.idcard);
     const saving = await Saving.findByTransactionNumber(req.params.id);
 
-    const today = new Date();
+    var today = new Date();
 
     const sentMonth = saving.createdAt.getMonth() + 1;
     const sentYear = saving.createdAt.getYear();
-    const profitAmount = 0;
+    let profitAmount = 0;
 
     if(sentMonth + saving.duration === today.getMonth()+1 && sentYear ===saving.createdAt.getYear()) {
         if(user) {
             // Số tiền lãi = Số tiền gửi x lãi suất (%năm) x số ngày gửi/360.
-            profitAmount = saving.amounOfMoney * saving.interestRate * ((today.getMonth - saving.duration)*30)/360
-            user.totalMoney = user.totalMoney + profitAmount
+            profitAmount = Number(saving.amounOfMoney) * Number(saving.interestRate) * ((today.getMonth() - Number(saving.duration))*30)/360
+            user.totalMoney = Number(user.totalMoney) + Number(profitAmount);
             user.save();
         }
     } else {
         if(user) {
             //Số tiền lãi = Số tiền gửi x lãi suất (%/năm) x số ngày thực gửi/360
-            profitAmount = saving.amounOfMoney * saving.interestRate * ((today.getMonth - saving.duration)*30)/360
-            user.totalMoney = user.totalMoney + profitAmount *
+            profitAmount = Number(saving.amounOfMoney) * Number(saving.interestRate) * ((today.getMonth() - Number(saving.duration))*30)/360
+            user.totalMoney = Number(user.totalMoney) + Number(profitAmount)
             user.save();
         }
     }
