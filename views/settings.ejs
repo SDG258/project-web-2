@@ -147,10 +147,12 @@
                                                             </p>
                                                         </div>
                                                     </div>
-                                                    <div class="file-upload-wrapper" data-text="Thay đổi ảnh">
-                                                        <input name="file-upload-field" type="file"
-                                                            class="file-upload-field" name="avatar">
-                                                    </div>
+                                                    <form action="/settings/avatar" method="POST" enctype="multipart/form-data">
+                                                        <div class="file-upload-wrapper" data-text="Thay đổi ảnh">
+                                                            <input name="file-upload-field" type="file"
+                                                                class="file-upload-field" id="avatar" name="avatar">
+                                                        </div>
+                                                    </form>
                                                 </div>
                                                 <div class="col-12">
                                                     <button class="btn btn-success waves-effect">Lưu</button>

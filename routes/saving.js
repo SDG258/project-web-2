@@ -57,7 +57,7 @@ router.post('/', asyncHandler(async function(req, res) {
     res.redirect('/saving');
 }));
 
-router.get('/withdrawal/:id', asyncHandler(async function(req, res) {
+router.get('/withdrawal/:id', asyncHandler(async function (req, res) {
     const user = await User.findUserByIdCard(req.currentUser.idcard);
     const saving = await Saving.findByTransactionNumber(req.params.id);
 

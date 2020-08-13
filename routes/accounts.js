@@ -49,8 +49,8 @@ router.post('/transfer', asyncHandler(async function(req, res) {
     res.redirect('/accounts');
 }));
 
-router.post('/', upload.single('avatar'), function(req, res,nex ) {
-    res.render('profile');
-});
+// router.post('/', upload.single('avatar'), function(req, res,nex ) {
+//     res.render('profile');
+// });
 
 module.exports = router;
