@@ -26,7 +26,6 @@ router.post('/', asyncHandler(async function postLogin(req, res) {
 
     if (!User.verifyPassword(req.body.password, user.password)) {
         err = "Sai mật khẩu"
-        console.log("Song Du");
         return res.render('signin', {err});
     }
 

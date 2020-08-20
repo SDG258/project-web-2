@@ -1,8 +1,8 @@
-const { Router } = require('express');
+const router = require("express").Router();
 const upload = require('../middlewares/upload');
 const User = require('../services/user');
-const router = new Router();
 const asyncHandler = require('express-async-handler');
+
 router.get('/', asyncHandler(async function (req, res) {
     if (req.currentUser) {
         const user = await User.findUserById(req.currentUser.id);
@@ -14,11 +14,9 @@ router.get('/', asyncHandler(async function (req, res) {
     }
 }));
 
-router.post('/:id', asyncHandler(async function (req, res, next) {
+router.post('/search/:id', asyncHandler(async function (req, res, next) {
     const { id } = req.params;
-    const {select} = req.body;
-    console.log(select);
-    console.log(id);
+    const { select } = req.body;
     const user = await User.findUserById(id);
     console.log(typeof user.activate)
     if (user) {
@@ -31,7 +29,6 @@ router.post('/:id', asyncHandler(async function (req, res, next) {
         });
     }
     return res.redirect("back");
-    //res.redirect('/accounts-admin');
 
 }));
 
@@ -56,9 +53,16 @@ router.post('/edit/:id', asyncHandler(async function (req, res, next) {
     res.redirect('/accounts-admin');
 }));
 
+// Mark
+router.post('/search', asyncHandler(async function (req, res) {
+    const { email } = req.body;
+    const userSearch = await User.findUserByEmail(email);
 
-// router.post('/', upload.single('avatar'), function(req, res,nex ) {
-//     res.render('profile');
-// });
+    const listUser = [];
+    listUser.push(userSearch);
+
+    console.log(userSearch);
+    return res.render('accounts-admin', { listUser });
+}));
 
 module.exports = router;

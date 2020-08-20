@@ -57,16 +57,16 @@
                                             <span class="arrow"><i class="la la-angle-down"></i></span>
                                         </div>
                                         <div class="dropdown-menu dropdown-menu-right">
-                                            <a href="accounts" class="dropdown-item">
+                                            <a href="/accounts" class="dropdown-item">
                                                 <i class="la la-user"></i> Tài khoản
                                             </a>
-                                            <a href="history" class="dropdown-item">
+                                            <a href="/history" class="dropdown-item">
                                                 <i class="la la-book"></i> Lịch sử
                                             </a>
-                                            <a href="settings" class="dropdown-item">
+                                            <a href="/settings" class="dropdown-item">
                                                 <i class="la la-cog"></i> Cài đặt
                                             </a>
-                                            <a href="logout" class="dropdown-item logout">
+                                            <a href="/logout" class="dropdown-item logout">
                                                 <i class="la la-sign-out"></i> Logout
                                             </a>
                                         </div>
@@ -172,6 +172,7 @@
                             </div>
                             <div class="card-body">
                                 <form method="POST" action="/accounts/transfer">
+                                    <span style="color: red;"> <strong><%= err!==null ? err : "" %></strong></span>
                                     <div class="form-group">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
@@ -212,6 +213,7 @@
                                                     <td>Số thẻ người gửi</td>
                                                     <td>Số thẻ người nhận</td>
                                                     <td>Số tiền</td>
+                                                    <td>Ghi chú</td>
                                                     <td>Mã giao dịch</td>
                                                     <td>Ngày và giờ thực hiện</td>
                                                 </tr>
@@ -220,6 +222,7 @@
                                                         <td><%= u.transactionCardNumber %></td>
                                                         <td><%= u.beneficiaryCardNumber %></td>
                                                         <td><%= u.amounOfMoney %></td>
+                                                        <td><%= u.tradingName %></td>
                                                         <td><%= u.transactionNumber %></td>
                                                         <td><%= u.createdAt %></td>
                                                     </tr>

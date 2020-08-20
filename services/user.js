@@ -22,7 +22,7 @@ class User extends Model {
     static async findUserByEmail(email){
         return User.findOne({
             where: {
-                email,
+                email: email.trim(),
             }
         });
     }
@@ -30,7 +30,7 @@ class User extends Model {
     static async findUserByIdCard(idcard){
       return User.findOne({
           where: {
-            idcard,
+            idcard: idcard.trim(),
           }
       });
   }
@@ -102,6 +102,10 @@ User.init({
   },
 
   totalMoney: {
+    type: Sequelize.STRING, 
+  },
+
+  limit: {
     type: Sequelize.STRING, 
   },
 

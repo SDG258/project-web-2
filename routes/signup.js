@@ -10,8 +10,11 @@ const Email = require('../services/email');
 
 const router = new Router();
 
+
+
+
 router.get('/', function(req, res){
-    res.render('signup');
+    res.render('signup', { errEmail: null, errDisplayName: null, errPhone: null, errIdentityCard: null });
 });
 
 router.post('/', [
@@ -21,23 +24,42 @@ router.post('/', [
         .custom(async function (email) {
             const found = await User.findUserByEmail(email);
             if (found) {
-                throw Error('User exits');
+                throw Error('Email đã tồn tại');
             }
             return true;
         }),
     body('password')
         .isLength({ min: 6 }),
+        
     body('displayName')
             .trim()
-            .notEmpty(),
+            .notEmpty().withMessage('Tên không được đê trống'),
     body('phone')
-        .isLength({ min: 9 }),
+        .isLength({ min: 9 }).withMessage('Số điện thoại phải ít nhất 6 ký tự'),
     body('identityCard')
-        .isLength({ min: 6 }),
+        .isLength({ min: 6 }).withMessage('CMND ít nhất phải có 6 ký tự'),
 ],asyncHandler(async function (req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(422).render('signup', { errors: errors.array() });
+        var errEmail = null;
+        var errDisplayName = null;
+        var errPhone = null;
+        var errIdentityCard = null;
+        errors.array().forEach(element => {
+            if(element.param ==='email'){
+                errEmail = element.msg;
+            }
+            if(element.param ==='displayName'){
+                errDisplayName = element.msg;
+            }
+            if(element.param ==='phone'){
+                errPhone = element.msg;
+            }
+            if(element.param ==='identityCard'){
+                errIdentityCard = element.msg;
+            }
+        });
+      return res.render('signup', { errEmail, errDisplayName, errPhone, errIdentityCard });
     }
 
     const user = await User.create({
@@ -49,6 +71,7 @@ router.post('/', [
         identityCard: req.body.identityCard,
         idcard: cryptoRandomString({length: 10, type: 'numeric'}),
         totalMoney: 0,
+        limit: 10000000,
         activate: 0,
         permission: 0,
     });
