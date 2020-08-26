@@ -42,7 +42,7 @@
                                     <div class="account_money">
                                         <ul>
                                             <li class="crypto">
-                                                <span><%= currentUser.totalMoney %></span>
+                                                <span><%= Number(currentUser.totalMoney).toLocaleString('en-US') %> </span>
                                                 <span>VNĐ</span>
                                             </li>
                                             <li class="usd">
@@ -146,7 +146,7 @@
                             </div>
                             <div class="card-body">
                                 <span>Số tiền</span>
-                                <h3><%= currentUser.totalMoney %> VNĐ</h3>
+                                <h3><%= Number(currentUser.totalMoney).toLocaleString('en-IN') %> VNĐ</h3>
 
                                 <div class="d-flex justify-content-between my-4">
                                     <div>
@@ -221,7 +221,7 @@
                                                     <tr>
                                                         <td><%= u.transactionCardNumber %></td>
                                                         <td><%= u.beneficiaryCardNumber %></td>
-                                                        <td><%= u.amounOfMoney %></td>
+                                                        <td><%= Number(u.amounOfMoney).toLocaleString('en-IN') %></td>
                                                         <td><%= u.tradingName %></td>
                                                         <td><%= u.transactionNumber %></td>
                                                         <td><%= u.createdAt %></td>

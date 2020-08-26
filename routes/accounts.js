@@ -10,15 +10,18 @@ const router = new Router();
 
 var err = null;
 
-// const job = new CronJob('0 */1 * * * *',function() { //Chạy sau mỗi 24h
+// const job = new CronJob('0 */1 * * * *',function(req, res) { //Chạy sau mỗi 24h
 //     User.sync().then(async function() {
-//         const userSend = await User.findUserByIdCard(req.currentUser.idcard);
-//         userSend.limit = 10000000;
-//         userSend.save();
 //         console.log("Song Du");
+//         console.log(currentUser);
+//         console.log(req.locals.currentUser);
+//          const userSend = await User.findUserByIdCard(req.currentUser.idcard);
+//         // userSend.limit = 10000000;
+//         // userSend.save();
 //     })
 // })
 // job.start();
+
 
 router.get('/', async function profile(req, res) {
     const deal =  await Deal.findAll({
