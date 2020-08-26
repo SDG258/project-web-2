@@ -2,11 +2,25 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
 var path = require('path');
+const CronJob = require('cron').CronJob;
 const db = require('./services/db');
+const User = require('./services/user');
 
 const port = process.env.PORT || 3000;
 
 const app = express();
+
+const job = new CronJob('0 */1440 * * * *',function() { //Chạy sau mỗi 30p
+    db.sync().then(async function(){
+        const user = await User.findAll()
+        user.forEach(x => {
+            x.limit = 500000;
+            x.save();
+        });
+    }).catch(console.error);
+
+})
+job.start();
 
 //Session
 app.use(cookieSession({
@@ -37,10 +51,6 @@ app.use('/settings', require('./routes/settings'));
 app.use('/settings-security', require('./routes/settings-security'));
 app.get('/logout', require('./routes/logout'));
 
-// app.post('/profile', upload.single('avatar'), function (req, res, next) {
-//     // req.file is the `avatar` file
-//     // req.body will hold the text fields, if there were any
-//   });
 
 db.sync().then(function() {
     app.listen(port);
