@@ -37,6 +37,10 @@ app.use('/settings', require('./routes/settings'));
 app.use('/settings-security', require('./routes/settings-security'));
 app.get('/logout', require('./routes/logout'));
 
+// app.post('/profile', upload.single('avatar'), function (req, res, next) {
+//     // req.file is the `avatar` file
+//     // req.body will hold the text fields, if there were any
+//   });
 
 db.sync().then(function() {
     app.listen(port);

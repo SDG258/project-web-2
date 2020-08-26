@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const asyncHandler = require('express-async-handler');
+const multer = require('multer');
 const upload = require('../middlewares/upload');
 const User = require('../services/user');
 
@@ -38,9 +39,32 @@ router.post('/changeInfo', asyncHandler(async function(req, res) {
     res.redirect('/settings');
 }));
 
-router.post('/avatar', upload.single('avatar'), function(req, res, nex ) {
-    console.log(req.file.avatar);
-    res.render('settings');
-});
+router.post('/avatar',function(req,res){
+
+    
+    var storage1 = multer.diskStorage({
+      destination: function (req, file, callback) {
+        callback(null, './public/images');
+      },
+      filename: function (req, file, callback) {
+        callback(null,`${req.session.userId}` + '-' + 'frontImage' + '.png' );
+      }
+    });
+
+    var frontUpload = multer({ storage : storage1 }).array('frontImage',1);
+    frontUpload(req,res,function(err) {  
+        if(err) {
+          res.redirect('/acc_authentication');
+         return res.end();
+        }
+        res.redirect('/acc_authentication')
+        res.end();
+    });
+  });
+
+// router.post('/avatar', upload.single('avatar'), function(req, res, nex ) {
+//     console.log(req.file);
+//     res.render('settings');
+// });
 
 module.exports = router;

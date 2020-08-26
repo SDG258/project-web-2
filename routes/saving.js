@@ -57,7 +57,7 @@ router.post('/', asyncHandler(async function(req, res) {
     res.redirect('/saving');
 }));
 
-router.get('/withdrawal/:id', asyncHandler(async function(req, res) {
+router.get('/withdrawal/:id', asyncHandler(async function (req, res) {
     const user = await User.findUserByIdCard(req.currentUser.idcard);
     const saving = await Saving.findByTransactionNumber(req.params.id);
 
@@ -83,7 +83,7 @@ router.get('/withdrawal/:id', asyncHandler(async function(req, res) {
         }
     }
 
-    await Email.send(user.email, 'Gửi tiết kiệm', `Số tiền lãi của bạn là: ${profitAmount}. Tổng số tiền hiện tại trong tài khoản của bạn là: ${user.totalMoney}`);
+    await Email.send(user.email, 'Gửi tiết kiệm', `Số tiền lãi của bạn là: ${profitAmount}. Tổng số tiền hiện tại trong tài khoản của bạn là: ${Number(user.totalMoney).toLocaleString('en-IN')}`);
 
     saving.status = '1'
     saving.save();
