@@ -83,7 +83,7 @@ router.get('/withdrawal/:id', asyncHandler(async function (req, res) {
         }
     }
 
-    await Email.send(user.email, 'Gửi tiết kiệm', `Số tiền lãi của bạn là: ${profitAmount}. Tổng số tiền hiện tại trong tài khoản của bạn là: ${Number(user.totalMoney).toLocaleString('en-IN')}`);
+    await Email.send(user.email, 'Gửi tiết kiệm', `Số tiền lãi của bạn là: ${Number(profitAmount).toLocaleString('en-IN')}. Tổng số tiền hiện tại trong tài khoản của bạn là: ${Number(user.totalMoney).toLocaleString('en-IN')}`);
 
     saving.status = '1'
     saving.save();

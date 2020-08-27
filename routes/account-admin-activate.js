@@ -8,14 +8,13 @@ router.get('/', asyncHandler(async function (req, res) {
         const user = await User.findUserById(req.currentUser.id);
         const listUser = await User.findAll();
         res.locals.user = user;
-        res.render('accounts-admin', { listUser });
+        res.render('accounts-admin-activate', { listUser });
     } else {
         res.redirect('/');
     }
 }));
 
 router.post('/search/:id', asyncHandler(async function (req, res, next) {
-    console.log("Song Du");
     const { id } = req.params;
     const { select } = req.body;
     const user = await User.findUserById(id);
@@ -32,40 +31,19 @@ router.post('/search/:id', asyncHandler(async function (req, res, next) {
     return res.redirect("back");
 
 }));
-router.post('/edit/:id', asyncHandler(async function (req, res, next) {
-    const { id } = req.params;
-    const { select } = req.body;
-    const user = await User.findUserById(id);
-    console.log(typeof user.activate)
-    if (user) {
-        await User.update({
-            activate: req.body.select,
-        }, {
-            where: {
-                id,
-            }
-        });
-    }
-    return res.redirect("back");
-
-}));
-
-// router.get('/edit/:id', asyncHandler(async function (req, res, next) {
-//     console.log("Song Du")
-//     const { id } = req.params;
-//     const user = await User.findUserById(id);
-//     res.render('editInfoUser', { user });
-// }));
 
 router.get('/edit/:id', asyncHandler(async function (req, res, next) {
     const { id } = req.params;
     const user = await User.findUserById(id);
     res.render('editInfoUser', { user });
-    console.log(user);
+}));
+
+router.post('/edit/:id', asyncHandler(async function (req, res, next) {
+    const { id } = req.params;
+    const user = await User.findUserById(id);
     if (user) {
         user.dob = req.body.dob;
         user.address = req.body.address;
-        console.log(user.address);
         user.wards = req.body.wards;
         user.district = req.body.district;
         user.city = req.body.city;
@@ -73,7 +51,6 @@ router.get('/edit/:id', asyncHandler(async function (req, res, next) {
         user.save();
     }
     res.redirect('/accounts-admin');
-
 }));
 
 // Mark

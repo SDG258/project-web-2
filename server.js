@@ -47,6 +47,7 @@ app.use('/otp-2', require('./routes/otpAuthentication'));
 app.use('/accounts', require('./routes/accounts'));
 app.use('/saving', require('./routes/saving'));
 app.use('/accounts-admin', require('./routes/accounts-admin'));
+app.use('/accounts-admin-activate', require('./routes/account-admin-activate'));
 app.use('/settings', require('./routes/settings'));
 app.use('/settings-security', require('./routes/settings-security'));
 app.get('/logout', require('./routes/logout'));

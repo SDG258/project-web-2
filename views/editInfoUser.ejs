@@ -42,7 +42,7 @@
                                     <div class="account_money">
                                         <ul>
                                             <li class="crypto">
-                                                <span><%= user.totalMoney %></span>
+                                                <span><%= Number(user.totalMoney).toLocaleString('en-IN') %></span>
                                                 <span>VNĐ</span>
                                             </li>
                                             <li class="usd">
@@ -57,16 +57,13 @@
                                             <span class="arrow"><i class="la la-angle-down"></i></span>
                                         </div>
                                         <div class="dropdown-menu dropdown-menu-right">
-                                            <a href="accounts" class="dropdown-item">
+                                            <a href="./accounts" class="dropdown-item">
                                                 <i class="la la-user"></i> Tài khoản
                                             </a>
-                                            <a href="history" class="dropdown-item">
-                                                <i class="la la-book"></i> Lịch sử
-                                            </a>
-                                            <a href="settings" class="dropdown-item">
+                                            <a href="./settings" class="dropdown-item">
                                                 <i class="la la-cog"></i> Cài đặt
                                             </a>
-                                            <a href="logout" class="dropdown-item logout">
+                                            <a href="./logout" class="dropdown-item logout">
                                                 <i class="la la-sign-out"></i> Logout
                                             </a>
                                         </div>
@@ -140,7 +137,7 @@
                                                         disabled>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="mr-sm-2">Số tiền: <%= user.totalMoney %></label>
+                                                    <label class="mr-sm-2">Số tiền: <%= Number(user.totalMoney).toLocaleString('en-IN') %></label>
                                                     <input type="number" class="form-control"
                                                        name="totalMoney" placeholder="500000">
                                                 </div>
