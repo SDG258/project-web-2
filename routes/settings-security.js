@@ -18,7 +18,7 @@ router.post('/', asyncHandler(async function postLogin(req, res) {
         user.save();
     }
 
-    //await SMS.send(user.phone, `Mã xác thực tài khoản: ${user.sms}`);
+    await SMS.send(user.phone, `Mã xác thực tài khoản: ${user.sms}`);
 
     res.redirect('otp-2');
 
