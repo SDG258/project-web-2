@@ -1,13 +1,12 @@
 {
-  "name": "project",
+  "name": "project-web-2",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
   },
-  "author": "",
+  "author": "SongDuNguyen <nsdu.17ck1@gmail.com",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -27,5 +26,15 @@
     "pg-hstore": "^2.3.3",
     "sequelize": "^6.2.4",
     "twilio": "^3.47.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SDG258/project-web-2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SDG258/project-web-2/issues"
+  },
+  "homepage": "https://github.com/SDG258/project-web-2#readme",
+  "description": ""
 }

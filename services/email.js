@@ -7,7 +7,7 @@ async function send(to, subject, content) {
         secure: false,
         auth: {
           user: process.env.EMAIL_USERNAME || '17k1.web2.demo@gmail.com',
-          pass: process.env.EMAIL_PASSWORD || 'abcXYZ123~',
+          pass: process.env.EMAIL_PASSWORD || 'abcXYZ123~' ,
         }
       });
       
